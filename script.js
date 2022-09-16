@@ -40,34 +40,24 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  // this.info = function () {
-  //   return `${title} by ${author}, ${pages} pages, ${
-  //     read ? 'already read' : 'not read yet'
-  //   }`;
-  // };
 }
 
-// function addBookToLibrary() {
-//   // let newTitle = title.value;
-//   // let newAuthor = author.value;
-//   // let newPages = pages.value;
-//   // let newRead = read.checked;
-//   let newBook = new Book(title, author, pages, read);
-//   myLibrary.push(newBook);
-// }
+let newTitle, newAuthor, newPages, newRead, newBook;
+
+function addBookToLibrary(event) {
+  newTitle = event.currentTarget.title.value;
+  newAuthor = event.currentTarget.author.value;
+  newPages = event.currentTarget.pages.value;
+  newRead = event.currentTarget.read.checked;
+  newBook = new Book(newTitle, newAuthor, newPages, newRead);
+  myLibrary.push(newBook);
+}
 
 form.addEventListener('submit', function (event) {
   event.preventDefault();
-  let newTitle = event.currentTarget.title.value;
-  let newAuthor = event.currentTarget.author.value;
-  let newPages = event.currentTarget.pages.value;
-  let newRead = event.currentTarget.read.checked;
-  let newBook = new Book(newTitle, newAuthor, newPages, newRead);
-  myLibrary.push(newBook);
+  addBookToLibrary(event);
   closeModal(modal);
   console.log(newBook, newTitle, newAuthor, newPages, newRead, myLibrary);
 });
 
-// const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, true);
-
-// console.log(theHobbit.info());
+function addCard() {}
