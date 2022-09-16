@@ -3,6 +3,11 @@
 const openAddBook = document.getElementById('add-btn');
 const overlay = document.getElementById('overlay');
 const modal = document.getElementById('modal');
+const form = document.getElementById('new-book-form');
+const title = document.getElementById('title');
+const author = document.getElementById('author');
+const pages = document.getElementById('pages');
+const read = document.getElementById('read');
 
 openAddBook.addEventListener('click', () => {
   openModal(modal);
@@ -38,6 +43,27 @@ function Book(title, author, pages, read) {
   };
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, true);
+// function addBookToLibrary() {
+//   // let newTitle = title.value;
+//   // let newAuthor = author.value;
+//   // let newPages = pages.value;
+//   // let newRead = read.checked;
+//   let newBook = new Book(title, author, pages, read);
+//   myLibrary.push(newBook);
+// }
 
-console.log(theHobbit.info());
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  let newTitle = event.currentTarget.title.value;
+  let newAuthor = event.currentTarget.author.value;
+  let newPages = event.currentTarget.pages.value;
+  let newRead = event.currentTarget.read.checked;
+  let newBook = new Book(newTitle, newAuthor, newPages, newRead);
+  myLibrary.push(newBook);
+  closeModal(modal);
+  console.log(newBook, newTitle, newAuthor, newPages, newRead, myLibrary);
+});
+
+// const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, true);
+
+// console.log(theHobbit.info());

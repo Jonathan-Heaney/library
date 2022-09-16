@@ -9,7 +9,7 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="active" id="overlay"></div>
+    <div id="overlay"></div>
     <header class="header">
       <div class="container">
         <div class="heading-container">
@@ -23,9 +23,9 @@
           <button id="add-btn">+ Add Book</button>
         </div>
       </div>
-      <div class="modal active" id="modal">
+      <div class="modal" id="modal">
         <div class="modal-header">Add New Book</div>
-        <form action="#">
+        <form id="new-book-form" action="#">
           <div>
             <label for="title"></label>
             <input type="text" name="title" id="title" placeholder="Title" />
