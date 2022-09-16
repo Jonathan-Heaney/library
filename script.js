@@ -11,6 +11,10 @@ const read = document.getElementById('read');
 
 openAddBook.addEventListener('click', () => {
   openModal(modal);
+  title.value = '';
+  author.value = '';
+  pages.value = '';
+  read.checked = false;
 });
 
 overlay.addEventListener('click', () => {
@@ -36,11 +40,11 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = function () {
-    return `${title} by ${author}, ${pages} pages, ${
-      read ? 'already read' : 'not read yet'
-    }`;
-  };
+  // this.info = function () {
+  //   return `${title} by ${author}, ${pages} pages, ${
+  //     read ? 'already read' : 'not read yet'
+  //   }`;
+  // };
 }
 
 // function addBookToLibrary() {
