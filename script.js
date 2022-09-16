@@ -68,6 +68,8 @@ function addCard() {
   addTitle();
   addAuthor();
   addPages();
+  addReadButton();
+  addRemoveButton();
 }
 
 function createCard() {
@@ -94,3 +96,28 @@ function addPages() {
   cardPages.textContent = `${newPages} pages`;
   newCard.appendChild(cardPages);
 }
+
+function addReadButton() {
+  cardRead = document.createElement('button');
+  if (newRead) {
+    cardRead.textContent = 'Read';
+    cardRead.classList.add('read');
+  } else if (!newRead) {
+    cardRead.textContent = 'Not Read';
+    cardRead.classList.add('not-read');
+  }
+  newCard.appendChild(cardRead);
+}
+
+function addRemoveButton() {
+  remove = document.createElement('button');
+  remove.textContent = 'Remove';
+  remove.classList.add('remove-btn');
+  newCard.appendChild(remove);
+}
+
+// function displayBooks() {
+//   myLibrary.forEach((book) => addCard());
+// }
+
+// displayBooks();
