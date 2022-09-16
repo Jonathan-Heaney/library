@@ -12,9 +12,26 @@ body {
   font-family: 'Crimson Text', 'Times New Roman', serif;
 }
 
+#overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  transition: 200ms ease-in-out;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
 .header {
   height: 100px;
-  background-color: #fff;
+  background-color: #f3f4f6;
 }
 
 .heading-container {
@@ -29,7 +46,7 @@ body {
 }
 
 .main {
-  background-color: #e0f2fe;
+  background-color: #e5e5e5;
   /* height: 700px; */
   box-shadow: 0 0 5px #ddd;
 }
@@ -59,6 +76,66 @@ body {
   background-color: #ddd;
   padding: 0.5rem 1rem;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  padding: 1.5rem;
+  background-color: #eee;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  gap: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.modal form input {
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  font-family: inherit;
+  border: none;
+  border-radius: 5px;
+}
+
+.checkbox-ctrl {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.submit-btn {
+  background-color: rgba(165, 243, 252, 1);
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 1.2rem;
+  font-family: inherit;
+}
+
+.submit-btn:hover {
+  background-color: rgba(165, 243, 252, 0.8);
   cursor: pointer;
 }
 
