@@ -20,6 +20,28 @@
       <div class="container">
         <div class="add-book"><button id="add-btn">+ Add Book</button></div>
       </div>
+      <div class="modal" id="modal">
+        <div class="modal-header">Add New Book</div>
+        <form action="#">
+          <div>
+            <label for="title"></label>
+            <input type="text" name="title" id="title" placeholder="Title" />
+          </div>
+          <div>
+            <label for="author"></label>
+            <input type="text" name="author" id="author" placeholder="Author" />
+          </div>
+          <div>
+            <label for="pages"></label>
+            <input type="number" name="pages" id="pages" placeholder="Pages" />
+          </div>
+          <div>
+            <label for="read">Have you read it?</label>
+            <input type="checkbox" name="read" id="read" />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
       <div class="container">
         <div class="book-cards"></div>
       </div>
