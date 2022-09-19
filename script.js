@@ -9,14 +9,11 @@ const author = document.getElementById('author');
 const pages = document.getElementById('pages');
 const read = document.getElementById('read');
 const cardGrid = document.querySelector('.card-grid');
-const cards = document.getElementsByClassName('card');
+const cards = document.querySelectorAll('.card');
 
 openAddBook.addEventListener('click', () => {
   openModal(modal);
-  title.value = '';
-  author.value = '';
-  pages.value = '';
-  read.checked = false;
+  form.reset();
 });
 
 overlay.addEventListener('click', () => {
@@ -37,24 +34,21 @@ function closeModal(modal) {
 
 let myLibrary = [];
 
-function Book(title, author, pages, read, index) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.index = index;
 }
 
-let newTitle, newAuthor, newPages, newRead, newBook, newCard, newIndex;
-let cardTitle, cardAuthor, cardPages, cardRead, remove;
+let newTitle, newAuthor, newPages, newRead, newBook;
 
 function addBookToLibrary(event) {
   newTitle = event.currentTarget.title.value;
   newAuthor = event.currentTarget.author.value;
   newPages = event.currentTarget.pages.value;
   newRead = event.currentTarget.read.checked;
-  newIndex = myLibrary.length;
-  newBook = new Book(newTitle, newAuthor, newPages, newRead, newIndex);
+  newBook = new Book(newTitle, newAuthor, newPages, newRead);
   myLibrary.push(newBook);
 }
 
@@ -62,7 +56,7 @@ form.addEventListener('submit', function (event) {
   event.preventDefault();
   addBookToLibrary(event);
   closeModal(modal);
-  addCard();
+
   console.log(
     newBook,
     newTitle,
@@ -74,14 +68,14 @@ form.addEventListener('submit', function (event) {
   );
 });
 
-function addCard() {
-  createCard();
-  addTitle();
-  addAuthor();
-  addPages();
-  addReadButton();
-  addRemoveButton();
+function showBooks() {
+  cards.forEach((card) => cardGrid.removeChild(card));
+  for (let i = 0; i < myLibrary.length; i++) {
+    addCard(myLibrary[i]);
+  }
 }
+
+function addCard(item) {}
 
 function createCard() {
   newCard = document.createElement('div');
