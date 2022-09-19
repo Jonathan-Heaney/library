@@ -9,7 +9,7 @@ const author = document.getElementById('author');
 const pages = document.getElementById('pages');
 const read = document.getElementById('read');
 const cardGrid = document.querySelector('.card-grid');
-const cards = document.querySelectorAll('.card');
+// const cards = document.querySelectorAll('.card');
 
 openAddBook.addEventListener('click', () => {
   openModal(modal);
@@ -55,44 +55,34 @@ function addBookToLibrary(event) {
 form.addEventListener('submit', function (event) {
   event.preventDefault();
   addBookToLibrary(event);
-  closeModal(modal);
 
-  console.log(
-    newBook,
-    newTitle,
-    newAuthor,
-    newPages,
-    newRead,
-    newIndex,
-    myLibrary
-  );
+  closeModal(modal);
+  showBooks();
+
+  console.log(newBook, newTitle, newAuthor, newPages, newRead, myLibrary);
 });
 
 function showBooks() {
-  cards.forEach((card) => cardGrid.removeChild(card));
+  const display = document.querySelector('.card-grid');
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card) => display.removeChild(card));
   for (let i = 0; i < myLibrary.length; i++) {
     addCard(myLibrary[i]);
   }
 }
 
-function addCard(item) {}
-
-function createCard() {
-  newCard = document.createElement('div');
+function addCard(item) {
+  const newCard = document.createElement('div');
   newCard.classList.add('card');
   cardGrid.appendChild(newCard);
-}
 
-function addTitle() {
-  cardTitle = document.createElement('h3');
-  cardTitle.textContent = `${newTitle}`;
+  const cardTitle = document.createElement('h3');
+  cardTitle.textContent = `${item.title}`;
   cardTitle.style.fontStyle = 'italic';
   newCard.appendChild(cardTitle);
-}
 
-function addAuthor() {
-  cardAuthor = document.createElement('h3');
-  cardAuthor.textContent = `${newAuthor}`;
+  const cardAuthor = document.createElement('h3');
+  cardAuthor.textContent = `${item.author}`;
   newCard.appendChild(cardAuthor);
 }
 
