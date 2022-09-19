@@ -84,20 +84,16 @@ function addCard(item) {
   const cardAuthor = document.createElement('h3');
   cardAuthor.textContent = `${item.author}`;
   newCard.appendChild(cardAuthor);
-}
 
-function addPages() {
-  cardPages = document.createElement('h3');
-  cardPages.textContent = `${newPages} pages`;
+  const cardPages = document.createElement('h3');
+  cardPages.textContent = `${item.pages} pages`;
   newCard.appendChild(cardPages);
-}
 
-function addReadButton() {
-  cardRead = document.createElement('button');
-  if (newRead) {
+  const cardRead = document.createElement('button');
+  if (item.read) {
     cardRead.textContent = 'Read';
     cardRead.classList.add('read');
-  } else if (!newRead) {
+  } else if (!item.read) {
     cardRead.textContent = 'Not Read';
     cardRead.classList.add('not-read');
   }
