@@ -9,6 +9,7 @@ const author = document.getElementById('author');
 const pages = document.getElementById('pages');
 const read = document.getElementById('read');
 const cardGrid = document.querySelector('.card-grid');
+const cards = document.getElementsByClassName('card');
 
 openAddBook.addEventListener('click', () => {
   openModal(modal);
@@ -36,14 +37,15 @@ function closeModal(modal) {
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, index) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.index = index;
 }
 
-let newTitle, newAuthor, newPages, newRead, newBook, newCard;
+let newTitle, newAuthor, newPages, newRead, newBook, newCard, newIndex;
 let cardTitle, cardAuthor, cardPages, cardRead, remove;
 
 function addBookToLibrary(event) {
@@ -51,7 +53,8 @@ function addBookToLibrary(event) {
   newAuthor = event.currentTarget.author.value;
   newPages = event.currentTarget.pages.value;
   newRead = event.currentTarget.read.checked;
-  newBook = new Book(newTitle, newAuthor, newPages, newRead);
+  newIndex = myLibrary.length;
+  newBook = new Book(newTitle, newAuthor, newPages, newRead, newIndex);
   myLibrary.push(newBook);
 }
 
@@ -60,7 +63,15 @@ form.addEventListener('submit', function (event) {
   addBookToLibrary(event);
   closeModal(modal);
   addCard();
-  console.log(newBook, newTitle, newAuthor, newPages, newRead, myLibrary);
+  console.log(
+    newBook,
+    newTitle,
+    newAuthor,
+    newPages,
+    newRead,
+    newIndex,
+    myLibrary
+  );
 });
 
 function addCard() {
@@ -116,8 +127,8 @@ function addRemoveButton() {
   newCard.appendChild(remove);
 }
 
-// function displayBooks() {
-//   myLibrary.forEach((book) => addCard());
-// }
-
-// displayBooks();
+cardGrid.addEventListener('click', (e) => {
+  if (e.target.classList.contains('remove-btn')) {
+    newCard.remove();
+  }
+});
