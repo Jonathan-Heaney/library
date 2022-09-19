@@ -70,7 +70,6 @@ function showBooks() {
 
 function addCard(item) {
   const newCard = document.createElement('div');
-  newCard.setAttribute('data-index', `${myLibrary.indexOf(item)}`);
   newCard.classList.add('card');
   cardGrid.appendChild(newCard);
 
