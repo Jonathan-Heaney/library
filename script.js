@@ -98,17 +98,15 @@ function addCard(item) {
     cardRead.classList.add('not-read');
   }
   newCard.appendChild(cardRead);
-}
 
-function addRemoveButton() {
-  remove = document.createElement('button');
+  const remove = document.createElement('button');
   remove.textContent = 'Remove';
   remove.classList.add('remove-btn');
   newCard.appendChild(remove);
 }
 
-cardGrid.addEventListener('click', (e) => {
-  if (e.target.classList.contains('remove-btn')) {
-    newCard.remove();
-  }
-});
+// cardGrid.addEventListener('click', (e) => {
+//   if (e.target.classList.contains('remove-btn')) {
+//     newCard.remove();
+//   }
+// });
