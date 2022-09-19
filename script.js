@@ -56,15 +56,16 @@ form.addEventListener('submit', function (event) {
   addBookToLibrary(event);
   closeModal(modal);
   showBooks();
-  console.log(newBook, newTitle, newAuthor, newPages, newRead, myLibrary);
 });
 
 function showBooks() {
-  const display = document.querySelector('.card-grid');
-  const cards = document.querySelectorAll('.card');
-  cards.forEach((card) => display.removeChild(card));
   for (let i = 0; i < myLibrary.length; i++) {
-    addCard(myLibrary[i]);
+    if (myLibrary[i].displayed) {
+      continue;
+    } else {
+      addCard(myLibrary[i]);
+      myLibrary[i].displayed = true;
+    }
   }
 }
 
