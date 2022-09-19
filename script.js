@@ -40,14 +40,12 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-let newTitle, newAuthor, newPages, newRead, newBook;
-
 function addBookToLibrary(event) {
-  newTitle = event.currentTarget.title.value;
-  newAuthor = event.currentTarget.author.value;
-  newPages = event.currentTarget.pages.value;
-  newRead = event.currentTarget.read.checked;
-  newBook = new Book(newTitle, newAuthor, newPages, newRead);
+  const newTitle = event.currentTarget.title.value;
+  const newAuthor = event.currentTarget.author.value;
+  const newPages = event.currentTarget.pages.value;
+  const newRead = event.currentTarget.read.checked;
+  const newBook = new Book(newTitle, newAuthor, newPages, newRead);
   myLibrary.push(newBook);
 }
 
