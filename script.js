@@ -9,7 +9,6 @@ const author = document.getElementById('author');
 const pages = document.getElementById('pages');
 const read = document.getElementById('read');
 const cardGrid = document.querySelector('.card-grid');
-// const cards = document.querySelectorAll('.card');
 
 openAddBook.addEventListener('click', () => {
   openModal(modal);
@@ -55,10 +54,8 @@ function addBookToLibrary(event) {
 form.addEventListener('submit', function (event) {
   event.preventDefault();
   addBookToLibrary(event);
-
   closeModal(modal);
   showBooks();
-
   console.log(newBook, newTitle, newAuthor, newPages, newRead, myLibrary);
 });
 
@@ -73,6 +70,7 @@ function showBooks() {
 
 function addCard(item) {
   const newCard = document.createElement('div');
+  newCard.setAttribute('data-index', `${myLibrary.indexOf(item)}`);
   newCard.classList.add('card');
   cardGrid.appendChild(newCard);
 
@@ -103,7 +101,14 @@ function addCard(item) {
   remove.textContent = 'Remove';
   remove.classList.add('remove-btn');
   newCard.appendChild(remove);
+
+  remove.addEventListener('click', function () {
+    cardGrid.removeChild(newCard);
+    myLibrary.splice(`${myLibrary.indexOf(item)}`, 1);
+  });
 }
+
+function removeCard(item) {}
 
 // cardGrid.addEventListener('click', (e) => {
 //   if (e.target.classList.contains('remove-btn')) {
